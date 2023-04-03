@@ -15,6 +15,7 @@ nav
     transition: 1s;
     position: fixed;
     width: 100%;
+    z-index: 100;
 }
 .click_nav
 {
@@ -565,7 +566,7 @@ nav
     .titleComents .comntP1
     {
         color: #d6111f;
-        font-size: 17px;
+        font-size: 18px;
         font-weight: bold;
         margin-bottom: 20px;
 
@@ -577,8 +578,225 @@ nav
         font-weight: bold;
         margin-bottom: 30px;
     }
-
+    .containerComsnt
+    {
+        display: flex;
+    }
+    .〈
+    {
+        width: 10%;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: #d6111f;
+        cursor: pointer;
+    }
+    .〉
+    {
+        width: 10%;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bolder;
+        color: #d6111f;
+        cursor: pointer;
+    }
+    .coments img
+    {
+        margin: 0 auto;
+        display: block;
+        border-radius: 100px;
+        margin-bottom: 25px;
+    }
+    .coments .nameComntes
+    {
+        text-align: center;
+        margin-bottom: 37px;
+        font-weight: bold;
+        font-size: 17px;
+    }
+    .coment
+    {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 22px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .❝
+    {
+        text-align: center;
+        font-size: 60px;
+        color: #d6111f;
+        margin-bottom: 30px;
+    }
+    /* .circle {
+        width: 200px;
+        height: 200px;
+        background-image: radial-gradient(rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.5));
+        border-radius: 50%; 
+        opacity: 1; 
+        transition: opacity 1s ease-out;
+      }
+       */
+      
 /* finish coments */
+
+/* startcompny */
+    .company-slider {
+        width: 100%;
+        max-width: 1360px;
+        margin: 0 auto;
+        overflow: hidden;
+        margin-top: 70px;
+        margin-bottom: 70px;
+        z-index: 0;
+    }
+    
+    .slider-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        z-index: 0;
+    }
+    
+    .slider-wrapper {
+        white-space: nowrap;
+        animation: slidew 20s linear infinite;
+    }
+    
+    .slider-wrapper img {
+        display: inline-block;
+        height: 150px;
+        margin-right: 20px;
+        z-index: 0;
+    }
+    
+    @keyframes slidew {
+        0% {
+        transform: translateX(-50%);
+        }
+        100% {
+        transform: translateX(0%);
+        }
+    }
+  
+/* finish compny */
+/* start footer */
+      footer
+      {
+        height: 500px;
+        background-color:#171422;
+        border-top: 10px solid #d6111f;
+      }
+      .containerAbout
+      {
+        width: 100%;
+        margin: 12px solid red;
+      }
+      .about
+      {
+        display: flex;
+        margin: 0 auto;
+        width: 70%;
+        padding-top: 50px;
+      }
+      .aboutMessages
+      {
+        padding-top: 50px;
+        width: 35%;
+        /* background-color: #434343; */
+      }
+      .aboutMessages .mes1
+      {
+        color:#ddc76d;
+        font-weight: bold;
+        font-size: 17px;
+        /* text-align: center; */
+        
+      }
+      .aboutMessages .mes2
+      {
+        /* text-align: center; */
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+      }
+      .subscribe
+      {
+        width: 50%;
+        /* background-color: #810b13; */
+        padding-top: 42px;
+      }
+      .enterSbscibe
+      {
+        width: 100%;
+        display: flex;
+      }
+      .enterSbscibe div:first-child
+      {
+        width: 75%;
+        /* background-color: #434343; */
+      }
+      .enterSbscibe div:first-child input
+      {
+        width: 100%;
+        height: 60px;
+        border: 1px solid white;
+        padding-left: 30px;
+        color: #434343;
+        border-radius: 10px 0px 0px 10px;
+      }
+      .enterSbscibe div:first-child input:focus
+      {
+        outline: 2px solid white;
+        outline-offset: -2px;
+
+        caret-color: black;
+      }
+      input::placeholder {
+        font-size: 15px;
+        }
+      .enterSbscibe div:nth-child(2)
+      {
+        width: 25%;
+        background-color: #a99d61;
+        border-radius: 0 10px 10px 0px;
+      }
+      .enterSbscibe div:nth-child(2) button
+      {
+        width: 100%;
+        height: 100%;
+        border: 1px solid white;
+        color: white;
+        background-color: #ddc76d;
+        transition: 0.5s;
+        cursor: pointer;
+        border-radius: 0 10px 10px 0px;
+      }
+      .enterSbscibe div:nth-child(2) button:hover
+      {
+        background-color: #d6111f;
+        color: #171422;
+      }
+/* finish footer */
+@media  (max-width: 1429px)
+{
+    .about
+    {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    padding-top: 50px;
+    }
+    .aboutMessages
+    {
+      padding-top: 50px;
+      width: 40%;
+      /* background-color: #434343; */
+    }
+}
 @media  (max-width: 1240px)
 {
     .content_nav_home
@@ -605,6 +823,19 @@ nav
         margin-bottom: 20px;
         color: #434343;
         
+    }
+    .about
+    {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    padding-top: 50px;
+    }
+    .aboutMessages
+    {
+      padding-top: 50px;
+      width: 40%;
+      /* background-color: #434343; */
     }
 }
 
@@ -739,7 +970,25 @@ nav
         padding-left: 22vw;
         margin-bottom: 40px;
     }
-    
+    .about
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutMessages
+    {
+        padding-top: 50px;
+        width: 60%;
+        margin: 0 auto;
+        /* background-color: #434343; */
+    }
+    .subscribe
+    {
+        width: 70%;
+        margin: 0 auto;
+        /* background-color: #810b13; */
+        padding-top: 42px;
+    }
     /* .flexDisply
     {
         border: 10px solid black;
@@ -789,8 +1038,8 @@ nav
     {
         display: block;
         width: 80%;
-        padding-left: 75%;
-        padding-top: 3%;
+        padding-left: 72%;
+        padding-top: 5%;
     }
     .nav_mobile img
     {
@@ -840,6 +1089,12 @@ nav
         background-color: rgb(4, 2, 2);
         font-size:17px;
     }
+    .content_logo
+    {
+        width: 10%;
+        padding-left: 5%;
+        padding-top: 4%;
+    }
     /* .under_nav
     {
         background-size:cover;
@@ -850,6 +1105,23 @@ nav
     } */
 
     /* finish menu monbile */
+    .coment
+    {
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .titleComents .comntP2
+    {
+        color: black;
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
 }
 
 @media  (max-width: 600px)
@@ -983,7 +1255,138 @@ nav
     100% {
         transform: translateX(-50%);
     }
-    }    
+    }
+    .coment
+    {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .titleComents .comntP2
+    {
+        color: black;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    .coment
+    {
+        width: 70%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 15px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .live div:first-child p:first-child
+    {
+        font-size: 30px;
+        width: 85%;
+        font-weight: bold;
+        /* margin-left: 80px; */
+        margin-top: 20px;
+        text-align: center;
+        margin:  0 auto;
+    }
+    .sp{
+        font-size: 30px;
+    }
+    .coment
+    {
+        width: 90%;
+        margin: 0 auto;
+        text-align: justify;
+        margin-bottom: 50px;
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .company-slider {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        overflow: hidden;
+        margin-top: 70px;
+        margin-bottom: 70px;
+        z-index: 0;
+    }
+    
+    .slider-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        z-index: 0;
+    }
+    
+    .slider-wrapper {
+        white-space: nowrap;
+        animation: slidew 20s linear infinite;
+    }
+    
+    .slider-wrapper img {
+        display: inline-block;
+        height: 90px;
+        margin-right: 20px;
+        z-index: 0;
+    }
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 380px;
+        overflow: hidden;
+      }
+      
+      .slider {
+        display: flex;
+        max-width: 90%;
+        height: 90%;
+        animation: slide 20s linear infinite;
+      }
+      
+      .slider img {
+        flex: 1;
+        height: 100%;
+        object-fit: cover;
+      }
+      .about
+      {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        padding-top: 50px;
+      }
+      .aboutMessages
+      {
+        padding-top: 50px;
+        width: 90%;
+        /* background-color: #434343; */
+      }
+      .aboutMessages .mes1
+      {
+        color:#ddc76d;
+        font-weight: bold;
+        font-size: 17px;
+        /* text-align: center; */
+        
+      }
+      .aboutMessages .mes2
+      {
+        /* text-align: center; */
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+      }
+      .subscribe
+      {
+        width: 90%;
+        /* background-color: #810b13; */
+        padding-top: 42px;
+      }
 }
 
 @media  (max-width: 530px)
@@ -1068,6 +1471,52 @@ nav
         color: #434343;
         
     }
+    .nav_mobile
+    {
+        display: block;
+        width: 80%;
+        padding-left: 70%;
+        padding-top: 6%;
+    }
+    .coment
+    {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 15px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .flexDisply div p:first-child
+    {
+        padding-top: 16%;
+        font-size: 20px;
+        color: black;
+        font-weight: bold;
+        padding-bottom: 5%;
+    }
+    .flexDisply div p:nth-child(2)
+    {
+        color: #737373;
+        padding-bottom: 5%;
+        line-height: 26px;
+        text-align: justify;
+        font-size: 14px;
+        width: 90%;
+    }
+    .flexDisply div p:nth-child(3)
+    {
+        color: #d6111f;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .under_header div
+    {
+        width: 100%;
+        height: 180px;
+    }
 }
 @media  (max-width: 450px)
 {
@@ -1111,6 +1560,33 @@ nav
         margin-bottom: 20px;
         color: #434343;
         
+    }
+    .live div:first-child p:first-child
+    {
+        font-size: 25px;
+        width: 95%;
+        font-weight: bold;
+        /* margin-left: 80px; */
+        margin-top: 20px;
+        text-align: center;
+        margin:  0 auto;
+    }
+    .coment
+    {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 40px;
+    }
+    .sp{
+        font-size: 25px;
+    }
+    .titleMovise .moviseP2
+    {
+        font-size: 30px;
     }
 }
 @media  (max-width: 375px)
@@ -1187,6 +1663,34 @@ nav
         color: #434343;
         
     }
+    .nav_mobile
+    {
+        display: block;
+        width: 80%;
+        padding-left:66%;
+        padding-top: 7%;
+    }
+    
+
+    .under_header div
+    {
+        width: 100%;
+        height: 210px;
+        background-color:#f4f2e9;
+    }
+    .live div:first-child p:first-child
+    {
+        font-size: 25px;
+        width: 95%;
+        font-weight: bold;
+        /* margin-left: 80px; */
+        margin-top: 20px;
+        text-align: center;
+        margin:  0 auto;
+    }
+    .sp{
+        font-size: 25px;
+    }
 }
 
 @media  (max-width: 335px)
@@ -1197,7 +1701,7 @@ nav
         display: block;
         width: 80%;
         padding-left: 65%;
-        padding-top: 3%;
+        padding-top: 8%;
     }
     
 }
