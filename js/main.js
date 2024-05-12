@@ -1,70 +1,248 @@
-let under_nav = document.getElementsByClassName("under_nav")[0]
-let nav = document.getElementById('nav')
-let menu = document.getElementById("menu")
-let closse = document.getElementById('close')
-let menu_mobile = document.getElementsByClassName("click_nav")[0]
-window.addEventListener('scroll', function() {
-if (window.pageYOffset === 0)
-    nav.style.backgroundColor = "transparent"
-    else
-    nav.style.backgroundColor = "#060002a2"
-});
+/*
+	BarberShop Theme Scripts
+*/
 
-menu.onclick = function() {
-  menu_mobile.style.right = "0px"
-};
-closse.onclick = function() {
-    menu_mobile.style.right = "-300px"
-  };
+(function($){ "use strict";
+             
+    $(window).on('load', function() {
+        $('body').addClass('loaded');
+    });
 
-// slide
-let comnt1 = "Nullam orci dui, dictum et magna sollicitudin, tempor blandit erat. Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis, sapien lacus pretium mi, sed lacinia dolor nibh non mi."
-let comnt2 = "tempor blandit erat. Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis, sapien lacus pretium mi, sed lacinia dolor nibh non mi."
-let comnt3 = "Maecenas suscipit tellus sit amet augue placerat fringilla a id lacus. Fusce tincidunt in leo lacinia condimentum. Donec placerat, orci vel consequat mattis, sapien lacus pretium mi, sed lacinia dolor nibh non mi."
-function fadeOut() {
-  const circle = document.querySelector('.circle');
-  circle.style.opacity = 0; // set opacity to 0 to start the fade out animation
-  setTimeout(() => {
-    circle.style.display = 'none'; // hide the element after the animation completes
-  }, 1000); // wait 1 second (1000 milliseconds) for the animation to complete
-}
-let coment = document.getElementsByClassName("coment")[0]
-let nameComntes = document.getElementsByClassName("nameComntes")[0]
-let img = document.getElementById('img')
-const array = [comnt1, comnt2, comnt3]
-const array2 = ["Cassie Carleton", "Coby Sue", "Stefanie Rashfod"]
-const array3 = ["../imgs/cassie.jpeg","../imgs/stefani.jpeg","../imgs/coby.jpeg"]
-let i = 0;
-let j = 0
-function change(par) {
-  if (par == "left")
-  {
-    if (i >= 2)
-      i = 2
-    else
-      i++;
-    coment.innerHTML = array[i]
-    nameComntes.innerHTML  = array2[i]
-    img.src = array3[i]
-  }
-  if (par == "right")
-  {
-    if (i <= 0)
-    {
-      i = 0
+/*=========================================================================
+	Sticky Header
+=========================================================================*/ 
+    $("#header").after('<div class="header-height"></div>');
+    function headerHeight(){
+        var height = $("#header").height();
+        $('.header-height').css('height', height+'px');
     }
-    else
-      i--
-    coment.innerHTML = array[i]
-    nameComntes.innerHTML  = array2[i]
-    img.src = array3[i]
-  }
-  // j++
-  // if (j < 3)
-  //   setTimeout(change("left"), 1000)
-  // else
-  //   setTimeout(change("right"), 1000)
-}
-// setTimeout(change("left"), 1000)
+	$(function() {
+		var header = $("#header"),
+			yOffset = 0,
+			triggerPoint = 80;
+            headerHeight();
+        $(window).resize(headerHeight);
+		$(window).on( 'scroll', function() {
+			yOffset = $(window).scrollTop();
 
-// finish slide 
+			if (yOffset >= triggerPoint) {
+				header.addClass("navbar-fixed-top animated slideInDown");
+			} else {
+				header.removeClass("navbar-fixed-top animated slideInDown");
+			}
+
+		});
+	});
+             
+/*=========================================================================
+    Mobile Menu
+=========================================================================*/  
+    $('.menu-wrap ul.nav').slicknav({
+        prependTo: '.header-section .navbar',
+        label: '',
+        allowParentLinks: true
+    });
+
+/*=========================================================================
+        Vdeo Background
+=========================================================================*/
+    $(".video_bg").YTPlayer();
+             
+/*=========================================================================
+    Main Slider
+=========================================================================*/
+    $('#main-slider').owlCarousel({
+        loop:true,
+        autoplay: true,
+        smartSpeed: 500,
+        items: 1,
+        nav:true,
+        navText: ['<i class="arrow_carrot-left"></i>', '<i class="arrow_carrot-right"></i>']
+    });
+
+    $("#main-slider").on("translate.owl.carousel", function(){
+        $(".main_slide .slider_content h3").removeClass("animated fadeInUp").css("opacity", "0");
+        $(".main_slide .slider_content h1").removeClass("animated fadeInUp").css("opacity", "0");
+        $(".main_slide .slider_content p, .main_slide .slider_content .default_btn").removeClass("animated fadeInUp").css("opacity", "0");
+    });
+    
+    $("#main-slider").on("translated.owl.carousel", function(){
+        $(".main_slide .slider_content h3").addClass("animated fadeInUp").css("opacity", "1");
+        $(".main_slide .slider_content h1").addClass("animated fadeInUp").css("opacity", "1");
+        $(".main_slide .slider_content p, .main_slide .slider_content .default_btn").addClass("animated fadeInUp").css("opacity", "1");
+    });
+
+/*=========================================================================
+    Gallery Slider
+=========================================================================*/  
+    $('#gallery-slide').owlCarousel({
+        loop:true,
+        autoplay: true,
+        smartSpeed: 500,
+        items: 1,
+        dots: false,
+        nav:true,
+        navText: ['<i class="arrow_carrot-left"></i>', '<i class="arrow_carrot-right"></i>']
+    });
+
+/*=========================================================================
+    Isotope Active
+=========================================================================*/
+	$('.portfolio_items').imagesLoaded( function() {
+
+		 // Add isotope click function
+		$('.gallery_filter li').on( 'click', function(){
+	        $(".gallery_filter li").removeClass("active");
+	        $(this).addClass("active");
+	 
+	        var selector = $(this).attr('data-filter');
+	        $(".portfolio_items").isotope({
+	            filter: selector,
+	            animationOptions: {
+	                duration: 750,
+	                easing: 'linear',
+	                queue: false,
+	            }
+	        });
+	        return false;
+	    });
+
+	    $(".portfolio_items").isotope({
+	        itemSelector: '.single_item',
+	        layoutMode: 'fitRows',
+	    });
+	});
+			 
+/*=========================================================================
+    Initialize smoothscroll plugin
+=========================================================================*/
+	smoothScroll.init({
+		offset: 60
+	});
+      
+/*=========================================================================
+    Testimonial Carousel
+=========================================================================*/
+	$('#testimonial_carousel').owlCarousel({
+        loop: true,
+        autoplay: true,
+        smartSpeed: 500,
+        items: 1,
+        nav: false
+    });
+
+/*=========================================================================
+    Active Nice Select
+=========================================================================*/    
+  $('select').niceSelect();
+
+ /*=========================================================================
+    Food Carousel
+=========================================================================*/
+    $('#food_carousel').imagesLoaded( function() {
+    	$('#food_carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            smartSpeed: 500,
+            nav: false,
+            dots: false,
+            responsive: true,
+            responsive : {
+			    0 : {
+			        items: 1
+			    },
+			    480 : {
+			        items: 3,
+			    },
+			    768 : {
+			        items: 4,
+			    }
+			}
+        });
+    });
+             
+/*=========================================================================
+    Sponsor Carousel
+=========================================================================*/
+    $('#sponsor_carousel').imagesLoaded( function() {
+    	$('#sponsor_carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            smartSpeed: 500,
+            nav: false,
+            dots: false,
+            responsive: true,
+            responsive : {
+			    0 : {
+			        items: 2
+			    },
+			    480 : {
+			        items: 3,
+			    },
+			    768 : {
+			        items: 6,
+			    }
+			}
+        });
+    });
+		
+/*=========================================================================
+    Active venobox
+=========================================================================*/
+	$('.img_popup').venobox({
+		numeratio: true,
+		infinigall: true
+	});
+
+/*=========================================================================
+	WOW Active
+=========================================================================*/ 
+    new WOW().init();	 
+/*=========================================================================
+    Scroll To Top
+=========================================================================*/     
+    $(window).on( 'scroll', function () {
+        if ($(this).scrollTop() > 100) {
+            $('#scroll-to-top').fadeIn();
+        } else {
+            $('#scroll-to-top').fadeOut();
+        }
+    });
+             
+/*=========================================================================
+    MAILCHIMP
+=========================================================================*/ 
+
+    if ($('.subscribe_form').length>0) {
+        /*  MAILCHIMP  */
+        $('.subscribe_form').ajaxChimp({
+            language: 'es',
+            callback: mailchimpCallback,
+            url: "//alexatheme.us14.list-manage.com/subscribe/post?u=48e55a88ece7641124b31a029&amp;id=361ec5b369" 
+        });
+    }
+
+    function mailchimpCallback(resp) {
+        if (resp.result === 'success') {
+            $('#subscribe-result').addClass('subs-result');
+            $('.subscription-success').text(resp.msg).fadeIn();
+            $('.subscription-error').fadeOut();
+
+        } else if(resp.result === 'error') {
+            $('#subscribe-result').addClass('subs-result');
+            $('.subscription-error').text(resp.msg).fadeIn();
+        }
+    }
+    $.ajaxChimp.translations.es = {
+        'submit': 'Submitting...',
+        0: 'We have sent you a confirmation email',
+        1: 'Please enter your email',
+        2: 'An email address must contain a single @',
+        3: 'The domain portion of the email address is invalid (the portion after the @: )',
+        4: 'The username portion of the email address is invalid (the portion before the @: )',
+        5: 'This email address looks fake or invalid. Please enter a real email address'
+    };
+
+})(jQuery);
